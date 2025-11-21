@@ -2,8 +2,4 @@
 title: "About"
 ---
 
-About this site
-
-```{r}
-1 + 1
-```
+This site was started and is currently maintained by the **AI in Med Ed** special interest group that is a part of the [Directors of Clinical Skills Education](https://www.directorsofclinicalskillseducation.org/) as a way to more easily dissiminate information relevant to the use of artificial intelligence in medical education.

@@ -2,5 +2,7 @@
 title: "AI in Medical Education Resources Page"
 ---
 
-A home to learn more about the use of AI in Medical Education. In addition to keeping a (relatively) up-to-date list of AI in Medical Education articles, we will post trainings, workshops, conferences, and other events that may be of interest.
+# Welcome!
+
+Learning more about the use of AI in Medical Education. In addition to keeping a (relatively) up-to-date list of AI in Medical Education articles, we will post trainings, workshops, conferences, and other events that may be of interest.
 
