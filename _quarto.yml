@@ -4,7 +4,7 @@ project:
 
 website:
   title: "MedEdAI"
-  favicon: images/MedEdAILogo.png
+  favicon: images/MedEdAILogo2.png
   navbar:
     left:
       - href: index.qmd
