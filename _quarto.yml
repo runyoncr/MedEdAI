@@ -9,12 +9,14 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+    right:
+      - icon: hospital
+        href: https://www.directorsofclinicalskillseducation.org/
 
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - morph
     css: styles.css
     toc: true
 
