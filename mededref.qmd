@@ -4,65 +4,53 @@ format: html
 ---
 
 ```{r}
-
 library(bibtex)
 library(dplyr)
-library(quarto)
 library(stringr)
 library(reactable)
 library(htmltools)
-library(bibtex)
 
 `%||%` <- function(a, b) if (!is.null(a) && length(a) > 0) a else b
 
-cat("Working directory:", getwd(), "\n")
-cat("Bib file exists?", file.exists("references.bib"), "\n")
-
 bib <- bibtex::read.bib("references.bib")
 
-cat("Number of entries parsed:", length(bib), "\n")
-print(bib)
+articles <- tibble(
+  key = names(bib),
+  title = sapply(bib, function(x) x$title %||% NA),
+  year = as.integer(sapply(bib, function(x) x$year %||% NA)),
+  journal = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),
+  authors = sapply(bib, function(x) x$author %||% NA),
+  doi = sapply(bib, function(x) x$doi %||% NA),
+  url = sapply(bib, function(x) {
+    x$url %||% (if (!is.null(x$doi)) paste0("https://doi.org/", x$doi) else NA)
+  }),
+  keywords = sapply(bib, function(x) paste(x$keywords %||% "", collapse = "; "))
+) %>%
+  mutate(
+    authors = str_replace_all(authors, " and ", "; "),
+    journal_group = if_else(
+      journal %in% c("Academic Medicine", "Medical Education", "AHSE"),
+      "Core", "Other"
+    )
+  ) %>%
+  arrange(desc(year), journal, title)
 
-
-# read bibtex
-
-# bib <- bibtex::read.bib("references.bib")
-
-# convert to dataframe
-# 
-# articles <- tibble::tibble(
-# key = names(bib),
-# title = sapply(bib, `[[`, "title"),
-# year = as.integer(sapply(bib, `[[`, "year")),
-# journal = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),
-# authors = sapply(bib, `[[`, "author"),
-# doi = sapply(bib, `[[`, "doi"),
-# url = sapply(bib, function(x) x$url %||% (if (!is.null(x$doi)) paste0("https://doi.org/", x$doi))),
-# keywords = sapply(bib, function(x) paste(x$keywords %||% "", collapse = "; "))
-# ) %>%
-# mutate(
-# authors = str_replace_all(authors, " and ", "; "),
-# journal_group = if_else(journal %in% c("Academic Medicine","Medical Education","AHSE"), "Core", "Other")
-# ) %>%
-# arrange(desc(year), journal, title)
-
-# reactable(
-# articles %>% select(title, year, journal, journal_group, authors, url),
-# filterable = TRUE,
-# searchable = TRUE,
-# defaultPageSize = 20,
-# columns = list(
-# title = colDef(name="Title", minWidth=260),
-# year = colDef(name="Year", filterable=TRUE),
-# journal = colDef(name="Journal", filterable=TRUE),
-# journal_group = colDef(name="Group", filterable=TRUE),
-# authors = colDef(name="Authors", minWidth=220),
-# url = colDef(
-# name="Link",
-# cell = function(value) a(href = value, "doi/link", target = "_blank")
-# )
-# )
-# )
-
+reactable(
+  articles %>% select(title, year, journal, journal_group, authors, url),
+  filterable = TRUE,
+  searchable = TRUE,
+  defaultPageSize = 20,
+  columns = list(
+    title = colDef(name = "Title", minWidth = 260),
+    year = colDef(name = "Year", filterable = TRUE),
+    journal = colDef(name = "Journal", filterable = TRUE),
+    journal_group = colDef(name = "Group", filterable = TRUE),
+    authors = colDef(name = "Authors", minWidth = 220),
+    url = colDef(
+      name = "Link",
+      cell = function(value) a(href = value, "doi/link", target = "_blank")
+    )
+  )
+)
 
 ```

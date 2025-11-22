@@ -104,6 +104,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react-dom.min.js"></script>
+
+<script src="site_libs/reactwidget-2.0.0/react-tools.js"></script>
+
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 
@@ -207,75 +223,61 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quarto)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltools)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bibtex)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltools)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">%||%</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(a) <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(a) <span class="sc">&gt;</span> <span class="dv">0</span>) a <span class="cf">else</span> b</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">%||%</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(a) <span class="sc">&amp;&amp;</span> <span class="fu">length</span>(a) <span class="sc">&gt;</span> <span class="dv">0</span>) a <span class="cf">else</span> b</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>bib <span class="ot">&lt;-</span> bibtex<span class="sc">::</span><span class="fu">read.bib</span>(<span class="st">"references.bib"</span>)</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Working directory:"</span>, <span class="fu">getwd</span>(), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Working directory: C:/Users/CRunyon/OneDrive - nbme.org/Documents/MedEdAI </code></pre>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>articles <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">key =</span> <span class="fu">names</span>(bib),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) x<span class="sc">$</span>title <span class="sc">%||%</span> <span class="cn">NA</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="fu">as.integer</span>(<span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) x<span class="sc">$</span>year <span class="sc">%||%</span> <span class="cn">NA</span>)),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">journal =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) x<span class="sc">$</span>journal <span class="sc">%||%</span> x<span class="sc">$</span>journaltitle <span class="sc">%||%</span> <span class="cn">NA</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">authors =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) x<span class="sc">$</span>author <span class="sc">%||%</span> <span class="cn">NA</span>),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">doi =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) x<span class="sc">$</span>doi <span class="sc">%||%</span> <span class="cn">NA</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) {</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    x<span class="sc">$</span>url <span class="sc">%||%</span> (<span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(x<span class="sc">$</span>doi)) <span class="fu">paste0</span>(<span class="st">"https://doi.org/"</span>, x<span class="sc">$</span>doi) <span class="cf">else</span> <span class="cn">NA</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  }),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">keywords =</span> <span class="fu">sapply</span>(bib, <span class="cf">function</span>(x) <span class="fu">paste</span>(x<span class="sc">$</span>keywords <span class="sc">%||%</span> <span class="st">""</span>, <span class="at">collapse =</span> <span class="st">"; "</span>))</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">authors =</span> <span class="fu">str_replace_all</span>(authors, <span class="st">" and "</span>, <span class="st">"; "</span>),</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">journal_group =</span> <span class="fu">if_else</span>(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      journal <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Academic Medicine"</span>, <span class="st">"Medical Education"</span>, <span class="st">"AHSE"</span>),</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Core"</span>, <span class="st">"Other"</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(year), journal, title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `authors = str_replace_all(authors, " and ", "; ")`.
+Caused by warning in `stri_replace_all_regex()`:
+! argument is not an atomic vector; coercing</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Bib file exists?"</span>, <span class="fu">file.exists</span>(<span class="st">"references.bib"</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Bib file exists? TRUE </code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">reactable</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  articles <span class="sc">%&gt;%</span> <span class="fu">select</span>(title, year, journal, journal_group, authors, url),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">filterable =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">searchable =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">defaultPageSize =</span> <span class="dv">20</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="fu">list</span>(</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">colDef</span>(<span class="at">name =</span> <span class="st">"Title"</span>, <span class="at">minWidth =</span> <span class="dv">260</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">colDef</span>(<span class="at">name =</span> <span class="st">"Year"</span>, <span class="at">filterable =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">journal =</span> <span class="fu">colDef</span>(<span class="at">name =</span> <span class="st">"Journal"</span>, <span class="at">filterable =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">journal_group =</span> <span class="fu">colDef</span>(<span class="at">name =</span> <span class="st">"Group"</span>, <span class="at">filterable =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">authors =</span> <span class="fu">colDef</span>(<span class="at">name =</span> <span class="st">"Authors"</span>, <span class="at">minWidth =</span> <span class="dv">220</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> <span class="fu">colDef</span>(</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"Link"</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">cell =</span> <span class="cf">function</span>(value) <span class="fu">a</span>(<span class="at">href =</span> value, <span class="st">"doi/link"</span>, <span class="at">target =</span> <span class="st">"_blank"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-20edf83a9dd2f68e3a93" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-20edf83a9dd2f68e3a93">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"title":["Generative artificial intelligence should not compromise traditional medical education","Generative artificial intelligence should not compromise traditional medical education"],"year":[2024,2024],"journal":["Academic Medicine","Academic Medicine"],"journal_group":["Core","Core"],"authors":["list(given = \"Yulin\", family = \"Hswen\", role = NULL, email = NULL, comment = NULL)","list(given = c(\"Thu\", \"T\"), family = \"Nguyen\", role = NULL, email = NULL, comment = NULL)"],"url":["https://journals.lww.com/academicmedicine/fulltext/2024/06000/generative_artificial_intelligence_should_not.3.aspx","https://journals.lww.com/academicmedicine/fulltext/2024/06000/generative_artificial_intelligence_should_not.3.aspx"]},"columns":[{"id":"title","name":"Title","type":"character","minWidth":260},{"id":"year","name":"Year","type":"numeric","filterable":true},{"id":"journal","name":"Journal","type":"character","filterable":true},{"id":"journal_group","name":"Group","type":"character","filterable":true},{"id":"authors","name":"Authors","type":"character","minWidth":220},{"id":"url","name":"Link","type":"character","cell":[{"name":"a","attribs":{"href":"https://journals.lww.com/academicmedicine/fulltext/2024/06000/generative_artificial_intelligence_should_not.3.aspx","target":"_blank"},"children":["doi/link"]},{"name":"a","attribs":{"href":"https://journals.lww.com/academicmedicine/fulltext/2024/06000/generative_artificial_intelligence_should_not.3.aspx","target":"_blank"},"children":["doi/link"]}]}],"filterable":true,"searchable":true,"defaultPageSize":20,"dataKey":"1302b8aab30dfd064dd6ca6a3efa9316"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bib <span class="ot">&lt;-</span> bibtex<span class="sc">::</span><span class="fu">read.bib</span>(<span class="st">"references.bib"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Number of entries parsed:"</span>, <span class="fu">length</span>(bib), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Number of entries parsed: 1 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(bib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hswen Y, Nguyen TT (2024). "Generative artificial intelligence should
-not compromise traditional medical education." _Academic Medicine_,
-*99*(6), 589-590. doi:10.1097/ACM.0000000000005674
-&lt;https://doi.org/10.1097/ACM.0000000000005674&gt;,
-&lt;https://journals.lww.com/academicmedicine/fulltext/2024/06000/generative_artificial_intelligence_should_not.3.aspx&gt;.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read bibtex</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># bib &lt;- bibtex::read.bib("references.bib")</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to dataframe</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># articles &lt;- tibble::tibble(</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># key = names(bib),</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># title = sapply(bib, `[[`, "title"),</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># year = as.integer(sapply(bib, `[[`, "year")),</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># journal = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># authors = sapply(bib, `[[`, "author"),</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># doi = sapply(bib, `[[`, "doi"),</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># url = sapply(bib, function(x) x$url %||% (if (!is.null(x$doi)) paste0("https://doi.org/", x$doi))),</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># keywords = sapply(bib, function(x) paste(x$keywords %||% "", collapse = "; "))</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ) %&gt;%</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate(</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># authors = str_replace_all(authors, " and ", "; "),</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># journal_group = if_else(journal %in% c("Academic Medicine","Medical Education","AHSE"), "Core", "Other")</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ) %&gt;%</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># arrange(desc(year), journal, title)</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co"># reactable(</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># articles %&gt;% select(title, year, journal, journal_group, authors, url),</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># filterable = TRUE,</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># searchable = TRUE,</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># defaultPageSize = 20,</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co"># columns = list(</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co"># title = colDef(name="Title", minWidth=260),</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co"># year = colDef(name="Year", filterable=TRUE),</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># journal = colDef(name="Journal", filterable=TRUE),</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="co"># journal_group = colDef(name="Group", filterable=TRUE),</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="co"># authors = colDef(name="Authors", minWidth=220),</span></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co"># url = colDef(</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="co"># name="Link",</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="co"># cell = function(value) a(href = value, "doi/link", target = "_blank")</span></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
