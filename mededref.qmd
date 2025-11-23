@@ -12,10 +12,35 @@ library(dplyr)
 library(stringr)
 library(reactable)
 library(htmltools)
+library(lubridate)
 
 `%||%` <- function(a, b) if (!is.null(a) && length(a) > 0) a else b
 
 bib <- bibtex::read.bib("references.bib")
+
+parse_pub_date <- function(x) {
+  # 1) if full date exists (BibLaTeX style)
+  if (!is.null(x$date)) {
+    d <- suppressWarnings(ymd(x$date))
+    if (!is.na(d)) return(d)
+  }
+  
+  # 2) otherwise use year + month (BibTeX style)
+  yr <- x$year %||% NA
+  mo <- x$month %||% 1  # default January if missing
+  
+  # Month can be "jun", "June", "6", etc.
+  mo_num <- suppressWarnings(as.integer(mo))
+  if (is.na(mo_num)) {
+    mo_num <- match(tolower(substr(as.character(mo), 1, 3)),
+                    tolower(month.abb))
+  }
+  if (is.na(mo_num)) mo_num <- 1
+  
+  # Build a date using first day of month
+  suppressWarnings(ymd(paste0(yr, "-", mo_num, "-01")))
+}
+
 
 fmt_authors <- function(a) {
   if (is.null(a)) return(NA_character_)
@@ -28,30 +53,42 @@ fmt_authors <- function(a) {
 }
 
 articles <- tibble(
-  key     = names(bib),
-  title   = sapply(bib, function(x) x$title %||% NA),
-  year    = as.integer(sapply(bib, function(x) x$year %||% NA)),
-  journal = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),
-  authors = sapply(bib, function(x) fmt_authors(x$author)),
-  doi     = sapply(bib, function(x) x$doi %||% NA),
-  url     = sapply(bib, function(x) {
+  key      = names(bib),
+  title    = sapply(bib, function(x) x$title %||% NA),
+  year     = as.integer(sapply(bib, function(x) x$year %||% NA)),
+  month    = sapply(bib, function(x) x$month %||% NA),  # optional to keep
+  pub_date = sapply(bib, parse_pub_date),
+  journal  = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),
+  authors  = sapply(bib, function(x) fmt_authors(x$author)),
+  doi      = sapply(bib, function(x) x$doi %||% NA),
+  url      = sapply(bib, function(x) {
     x$url %||% (if (!is.null(x$doi)) paste0("https://doi.org/", x$doi) else NA)
   })
 ) %>%
-  arrange(desc(year), journal, title)   # journal_group removed since you don't show it
+  arrange(desc(pub_date), journal, title)
 
 
 reactable(
-  articles %>% select(title, year, journal, authors, url),
+  # Include pub_date FIRST so we can sort by it (even though it's hidden)
+  articles %>% select(title, pub_date, year, journal, authors, url),
+  
   searchable = TRUE,        # global keyword search bar
-  filterable = TRUE,        # enables filters for the columns you mark filterable
+  filterable = TRUE,        # enables column filters you specify
   defaultPageSize = 20,
   highlight = TRUE,
   striped = TRUE,
   bordered = FALSE,
   wrap = TRUE,
-  defaultSorted = list(year = "desc"),
+
+  # ⭐ Sort newest → oldest by actual publication date
+  defaultSorted = list(pub_date = "desc"),
+
   columns = list(
+
+    # Hidden sort column
+    pub_date = colDef(
+      show = FALSE           # we use it for ordering but don’t display it
+    ),
 
     title = colDef(
       name = "Title",
