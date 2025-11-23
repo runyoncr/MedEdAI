@@ -1,9 +1,12 @@
 ---
 title: "Journal Articles"
 format: html
+page-layout: full
+
 ---
 
-```{r}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
 library(bibtex)
 library(dplyr)
 library(stringr)
@@ -14,43 +17,98 @@ library(htmltools)
 
 bib <- bibtex::read.bib("references.bib")
 
+fmt_authors <- function(a) {
+  if (is.null(a)) return(NA_character_)
+  out <- tryCatch(
+    bibtex::format.author(a),
+    error = function(e) a
+  )
+  # collapse anything vector-like into 1 string
+  paste(out, collapse = "; ")
+}
+
 articles <- tibble(
-  key = names(bib),
-  title = sapply(bib, function(x) x$title %||% NA),
-  year = as.integer(sapply(bib, function(x) x$year %||% NA)),
+  key     = names(bib),
+  title   = sapply(bib, function(x) x$title %||% NA),
+  year    = as.integer(sapply(bib, function(x) x$year %||% NA)),
   journal = sapply(bib, function(x) x$journal %||% x$journaltitle %||% NA),
-  authors = sapply(bib, function(x) x$author %||% NA),
-  doi = sapply(bib, function(x) x$doi %||% NA),
-  url = sapply(bib, function(x) {
+  authors = sapply(bib, function(x) fmt_authors(x$author)),
+  doi     = sapply(bib, function(x) x$doi %||% NA),
+  url     = sapply(bib, function(x) {
     x$url %||% (if (!is.null(x$doi)) paste0("https://doi.org/", x$doi) else NA)
-  }),
-  keywords = sapply(bib, function(x) paste(x$keywords %||% "", collapse = "; "))
+  })
 ) %>%
-  mutate(
-    authors = str_replace_all(authors, " and ", "; "),
-    journal_group = if_else(
-      journal %in% c("Academic Medicine", "Medical Education", "AHSE"),
-      "Core", "Other"
-    )
-  ) %>%
-  arrange(desc(year), journal, title)
+  arrange(desc(year), journal, title)   # journal_group removed since you don't show it
+
 
 reactable(
-  articles %>% select(title, year, journal, journal_group, authors, url),
-  filterable = TRUE,
-  searchable = TRUE,
+  articles %>% select(title, year, journal, authors, url),
+  searchable = TRUE,        # global keyword search bar
+  filterable = TRUE,        # enables filters for the columns you mark filterable
   defaultPageSize = 20,
+  highlight = TRUE,
+  striped = TRUE,
+  bordered = FALSE,
+  wrap = TRUE,
+  defaultSorted = list(year = "desc"),
   columns = list(
-    title = colDef(name = "Title", minWidth = 260),
-    year = colDef(name = "Year", filterable = TRUE),
-    journal = colDef(name = "Journal", filterable = TRUE),
-    journal_group = colDef(name = "Group", filterable = TRUE),
-    authors = colDef(name = "Authors", minWidth = 220),
+
+    title = colDef(
+      name = "Title",
+      minWidth = 320,
+      filterable = FALSE,
+      cell = function(value) div(style = "white-space: normal;", value)
+    ),
+
+    year = colDef(
+      name = "Year",
+      sortable = TRUE,
+      filterable = TRUE,
+      filterInput = function(values, name) {
+        years <- sort(unique(values), decreasing = TRUE)
+        htmltools::tags$select(
+          onchange = sprintf("Reactable.setFilter('%s', this.value)", name),
+          htmltools::tags$option(value = "", "All years"),
+          lapply(years, function(y) htmltools::tags$option(value = y, y))
+        )
+      },
+      width = 90
+    ),
+
+    journal = colDef(
+      name = "Journal",
+      sortable = TRUE,
+      filterable = TRUE,
+      filterInput = function(values, name) {
+        journals <- sort(unique(values))
+        htmltools::tags$select(
+          onchange = sprintf("Reactable.setFilter('%s', this.value)", name),
+          htmltools::tags$option(value = "", "All journals"),
+          lapply(journals, function(j) htmltools::tags$option(value = j, j))
+        )
+      },
+      minWidth = 180
+    ),
+
+    authors = colDef(
+      name = "Authors",
+      filterable = FALSE,
+      minWidth = 220,
+      cell = function(value) div(style = "white-space: normal;", value)
+    ),
+
     url = colDef(
       name = "Link",
-      cell = function(value) a(href = value, "doi/link", target = "_blank")
+      filterable = FALSE,
+      width = 110,
+      cell = function(value) {
+        if (is.na(value)) return("")
+        a(href = value, "doi/link", target = "_blank")
+      }
     )
   )
 )
 
+
 ```
+
