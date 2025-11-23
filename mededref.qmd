@@ -5,6 +5,9 @@ page-layout: full
 
 ---
 
+We aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email [Chris Runyon at CRunyon\@nbme.org](mailto: CRunyon@nbme.org) with any manuscripts that should be added to the list.
+
+
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 
 library(bibtex)
