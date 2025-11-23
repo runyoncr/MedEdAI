@@ -1,8 +1,13 @@
 ---
-title: "AI in Medical Education Resources Page"
+title: "AI in Medical Education Resources"
 ---
 
 # Welcome!
 
 This site was started to disseminate information relevant to the use of artificial intelligence in medical education, collecting manuscripts, talks, training / workshop series, etc.
 
+<div style="text-align: center;">
+  <img src="images/MedEdAI_homepage_image.png" 
+       alt="AI in Medical Education Banner" 
+       style="width: 80%; max-width: 900px;">
+</div>

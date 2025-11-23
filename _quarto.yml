@@ -7,8 +7,6 @@ website:
   favicon: images/MedEdAILogo2.png
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - about.qmd
       - href: mededref.qmd
         text: Articles
