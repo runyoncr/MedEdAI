@@ -14,6 +14,14 @@ website:
       - href: https://www.directorsofclinicalskillseducation.org/
         text: '<i class="bi bi-hospital"></i>'
         aria-label: "DOCS Website"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+    - index.qmd
+    - mededref.qmd
+    - profdev.qmd
+    - learning.qmd
 
 format:
   html:

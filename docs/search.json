@@ -1,10 +1,25 @@
 [
   {
-    "objectID": "mededref.html",
-    "href": "mededref.html",
-    "title": "Journal Articles",
+    "objectID": "profdev.html",
+    "href": "profdev.html",
+    "title": "Professional Development",
     "section": "",
-    "text": "We aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email Chris Runyon at CRunyon@nbme.org with any manuscripts that should be added to the list."
+    "text": "Placeholder for webinars, etc.",
+    "crumbs": [
+      "About",
+      "Professional Development"
+    ]
+  },
+  {
+    "objectID": "learning.html",
+    "href": "learning.html",
+    "title": "Learning More About AI",
+    "section": "",
+    "text": "More Conceptual and Applications\nMore accessible / useful training\n\n\nMore Technical\nTechnical details stuff",
+    "crumbs": [
+      "About",
+      "Learning More About AI"
+    ]
   },
   {
     "objectID": "about.html",
@@ -18,6 +33,21 @@
     "href": "index.html",
     "title": "AI in Medical Education Resources",
     "section": "",
-    "text": "Welcome!\nThis site was started to disseminate information relevant to the use of artificial intelligence in medical education, collecting manuscripts, talks, training / workshop series, etc."
+    "text": "Welcome!\nThis site was started to disseminate information relevant to the use of artificial intelligence in medical education, collecting manuscripts, talks, training / workshop series, etc.",
+    "crumbs": [
+      "About",
+      "AI in Medical Education Resources"
+    ]
+  },
+  {
+    "objectID": "mededref.html",
+    "href": "mededref.html",
+    "title": "Journal Articles",
+    "section": "",
+    "text": "We aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email Chris Runyon at CRunyon@nbme.org with any manuscripts that should be added to the list.",
+    "crumbs": [
+      "About",
+      "Journal Articles"
+    ]
   }
 ]
