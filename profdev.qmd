@@ -2,4 +2,24 @@
 title: "Professional Development"
 ---
 
-Placeholder for webinars, etc.
+# IAMSE Winter 2026 Webcast Audio Seminar Series
+
+## From Hype to Reality: AI's Rapid Transformation of Health-Sciences Professions Education
+
+Join IAMSE for this five-session Winter WAS series that will examine evidence-based applications, assessment of knowledge/skills, human factors in AI adoption, autonomous AI agents for teaching and administration, and policy and competency frameworks for faculty and students.
+
+Presentations will focus on practical examples, emerging risks, and actionable strategies faculty can use now to design learning, assessment, and support systems to prepare students for a learning and practice environment transformed by AI. This series is intended for basic-science and clinical educators seeking forward-looking, implementable guidance.
+
+Join us for each one-hour session beginning Thursday, January 8, 2026, at 12 PM EST. Sessions in the Winter 2026 Series include:
+
+-   **January 8, 2026, 12:00 PM EST** - Synergistic Learning: Integrating AI and Web Applications for Enhanced Medical Training, presented by Delison Elgui de Oliveira, San Paulo State University (UNESP), Botucatu School of Medicine, and Antonio Rusiñol, Quillen College of Medicine.
+
+-   **January 15, 2026, 12:00 PM EST**- Applied Intelligence: Integrating AI Technologies Into Medical Education, presented by Laurah Turner, University of Cincinnati.
+
+-  **January 22, 2026, 12:00 PM EST** - Generative AI in Medical Education: Navigating the Educators' Dilemma, presented by Neil Mehta, Cleveland Clinic Lerner College of Medicine of CWRU SOM.
+
+-   **January 29, 2026, 12:00 PM EST** - Automated Tools to Autonomous Agents: Affordances and Limitations to AI for Learning, presented by Richard Landers, University of Minnesota - Twin Cities.
+
+-   **February 5, 2026, 12:00 PM EST** - Real World AI Use: Guardrails, Responsible Use, and Competencies, presented by Kimberly Lomis, American Medical Association.
+
+More info and registration [here.](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)

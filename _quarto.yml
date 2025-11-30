@@ -8,8 +8,6 @@ website:
   navbar:
     left:
       - about.qmd
-      - href: mededref.qmd
-        text: Articles
     right:
       - href: https://www.directorsofclinicalskillseducation.org/
         text: '<i class="bi bi-hospital"></i>'
@@ -19,9 +17,9 @@ website:
     search: true
     contents:
     - index.qmd
-    - mededref.qmd
     - profdev.qmd
     - learning.qmd
+    - mededref.qmd
 
 format:
   html:
@@ -32,6 +30,8 @@ format:
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     css: styles.css
     toc: true
+    link-external-newwindow: true
+    link-external-icon: true
 
 editor: visual
 

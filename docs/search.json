@@ -4,7 +4,18 @@
     "href": "profdev.html",
     "title": "Professional Development",
     "section": "",
-    "text": "Placeholder for webinars, etc.",
+    "text": "Join IAMSE for this five-session Winter WAS series that will examine evidence-based applications, assessment of knowledge/skills, human factors in AI adoption, autonomous AI agents for teaching and administration, and policy and competency frameworks for faculty and students.\nPresentations will focus on practical examples, emerging risks, and actionable strategies faculty can use now to design learning, assessment, and support systems to prepare students for a learning and practice environment transformed by AI. This series is intended for basic-science and clinical educators seeking forward-looking, implementable guidance.\nJoin us for each one-hour session beginning Thursday, January 8, 2026, at 12 PM EST. Sessions in the Winter 2026 Series include:\n\nJanuary 8, 2026, 12:00 PM EST - Synergistic Learning: Integrating AI and Web Applications for Enhanced Medical Training, presented by Delison Elgui de Oliveira, San Paulo State University (UNESP), Botucatu School of Medicine, and Antonio Rusiñol, Quillen College of Medicine.\nJanuary 15, 2026, 12:00 PM EST - Applied Intelligence: Integrating AI Technologies Into Medical Education, presented by Laurah Turner, University of Cincinnati.\nJanuary 22, 2026, 12:00 PM EST - Generative AI in Medical Education: Navigating the Educators’ Dilemma, presented by Neil Mehta, Cleveland Clinic Lerner College of Medicine of CWRU SOM.\nJanuary 29, 2026, 12:00 PM EST - Automated Tools to Autonomous Agents: Affordances and Limitations to AI for Learning, presented by Richard Landers, University of Minnesota - Twin Cities.\nFebruary 5, 2026, 12:00 PM EST - Real World AI Use: Guardrails, Responsible Use, and Competencies, presented by Kimberly Lomis, American Medical Association.\n\nMore info and registration here.",
+    "crumbs": [
+      "About",
+      "Professional Development"
+    ]
+  },
+  {
+    "objectID": "profdev.html#from-hype-to-reality-ais-rapid-transformation-of-health-sciences-professions-education",
+    "href": "profdev.html#from-hype-to-reality-ais-rapid-transformation-of-health-sciences-professions-education",
+    "title": "Professional Development",
+    "section": "",
+    "text": "Join IAMSE for this five-session Winter WAS series that will examine evidence-based applications, assessment of knowledge/skills, human factors in AI adoption, autonomous AI agents for teaching and administration, and policy and competency frameworks for faculty and students.\nPresentations will focus on practical examples, emerging risks, and actionable strategies faculty can use now to design learning, assessment, and support systems to prepare students for a learning and practice environment transformed by AI. This series is intended for basic-science and clinical educators seeking forward-looking, implementable guidance.\nJoin us for each one-hour session beginning Thursday, January 8, 2026, at 12 PM EST. Sessions in the Winter 2026 Series include:\n\nJanuary 8, 2026, 12:00 PM EST - Synergistic Learning: Integrating AI and Web Applications for Enhanced Medical Training, presented by Delison Elgui de Oliveira, San Paulo State University (UNESP), Botucatu School of Medicine, and Antonio Rusiñol, Quillen College of Medicine.\nJanuary 15, 2026, 12:00 PM EST - Applied Intelligence: Integrating AI Technologies Into Medical Education, presented by Laurah Turner, University of Cincinnati.\nJanuary 22, 2026, 12:00 PM EST - Generative AI in Medical Education: Navigating the Educators’ Dilemma, presented by Neil Mehta, Cleveland Clinic Lerner College of Medicine of CWRU SOM.\nJanuary 29, 2026, 12:00 PM EST - Automated Tools to Autonomous Agents: Affordances and Limitations to AI for Learning, presented by Richard Landers, University of Minnesota - Twin Cities.\nFebruary 5, 2026, 12:00 PM EST - Real World AI Use: Guardrails, Responsible Use, and Competencies, presented by Kimberly Lomis, American Medical Association.\n\nMore info and registration here.",
     "crumbs": [
       "About",
       "Professional Development"
@@ -15,7 +26,7 @@
     "href": "learning.html",
     "title": "Learning More About AI",
     "section": "",
-    "text": "More Conceptual and Applications\nMore accessible / useful training\n\n\nMore Technical\nTechnical details stuff",
+    "text": "More Conceptual and Applications\nMore accessible / useful training\n\n\nMore Technical\nFor those who want to learn more about the technical aspects of GPTs, I highly recommend watching 3Blue1Brown’s series on Neural Networks / Deep Learning. Some conceptual knowledge of matrix algebra will be helpful. Of particular interest will be Chapter 5: But what is a GPT? Visual intro to transformers and Chapter 6: Attention in transformers, visually explained.\nI also found this blog post discussing LLM architecture to be accessible and informative.\nDeepLearning.AI has a great selection of freely-available courses on select topics that are more appropriate for users more familiar with AI, such as:\n\nAgentic AI\nEvaluating Agents\nGenAI Workflow Orchestration",
     "crumbs": [
       "About",
       "Learning More About AI"
