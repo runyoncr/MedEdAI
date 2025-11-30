@@ -26,11 +26,29 @@
     "href": "learning.html",
     "title": "Learning More About AI",
     "section": "",
-    "text": "More Conceptual and Applications\nMore accessible / useful training\n\n\nMore Technical\nFor those who want to learn more about the technical aspects of GPTs, I highly recommend watching 3Blue1Brown’s series on Neural Networks / Deep Learning. Some conceptual knowledge of matrix algebra will be helpful. Of particular interest will be Chapter 5: But what is a GPT? Visual intro to transformers and Chapter 6: Attention in transformers, visually explained.\nI also found this blog post discussing LLM architecture to be accessible and informative.\nDeepLearning.AI has a great selection of freely-available courses on select topics that are more appropriate for users more familiar with AI, such as:\n\nAgentic AI\nEvaluating Agents\nGenAI Workflow Orchestration",
+    "text": "UNDER CONSTRUCTION",
     "crumbs": [
       "About",
       "Learning More About AI"
     ]
+  },
+  {
+    "objectID": "learning.html#including-applications-of-ai-in-med-ed-assessment",
+    "href": "learning.html#including-applications-of-ai-in-med-ed-assessment",
+    "title": "Learning More About AI",
+    "section": "",
+    "text": "UNDER CONSTRUCTION",
+    "crumbs": [
+      "About",
+      "Learning More About AI"
+    ]
+  },
+  {
+    "objectID": "aitools.html",
+    "href": "aitools.html",
+    "title": "AI Tools",
+    "section": "",
+    "text": "UNDER CONSTRUCTION"
   },
   {
     "objectID": "about.html",
@@ -55,7 +73,7 @@
     "href": "mededref.html",
     "title": "Journal Articles",
     "section": "",
-    "text": "We aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email Chris Runyon at CRunyon@nbme.org with any manuscripts that should be added to the list.",
+    "text": "UNDER CONSTRUCTION\nWe aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email Chris Runyon at CRunyon@nbme.org with any manuscripts that should be added to the list.",
     "crumbs": [
       "About",
       "Journal Articles"

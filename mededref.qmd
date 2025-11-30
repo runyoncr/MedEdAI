@@ -4,6 +4,8 @@ format: html
 page-layout: full
 ---
 
+**UNDER CONSTRUCTION**
+
 We aim to keep a (moderately) current list of the research on the use of AI in Medical Education. Any omissions are accidental; please email [Chris Runyon at CRunyon\@nbme.org](mailto: CRunyon@nbme.org) with any manuscripts that should be added to the list.
 
 
@@ -71,26 +73,20 @@ articles <- tibble(
 
 
 reactable(
-  # Include pub_date FIRST so we can sort by it (even though it's hidden)
-  articles %>% select(title, pub_date, year, journal, authors, url),
+  articles %>% select(title, year, journal, authors, url),
   
-  searchable = TRUE,        # global keyword search bar
-  filterable = TRUE,        # enables column filters you specify
+  elementId = "articles-table",
+  searchable = TRUE,
+  filterable = TRUE,
   defaultPageSize = 20,
   highlight = TRUE,
   striped = TRUE,
   bordered = FALSE,
   wrap = TRUE,
 
-  # ⭐ Sort newest → oldest by actual publication date
-  defaultSorted = list(pub_date = "desc"),
+  defaultSorted = list(year = "desc", journal = "asc", title = "asc"),
 
   columns = list(
-
-    # Hidden sort column
-    pub_date = colDef(
-      show = FALSE           # we use it for ordering but don’t display it
-    ),
 
     title = colDef(
       name = "Title",
@@ -106,7 +102,7 @@ reactable(
       filterInput = function(values, name) {
         years <- sort(unique(values), decreasing = TRUE)
         htmltools::tags$select(
-          onchange = sprintf("Reactable.setFilter('%s', this.value)", name),
+          onchange = "Reactable.setFilter('articles-table', 'year', this.value)",
           htmltools::tags$option(value = "", "All years"),
           lapply(years, function(y) htmltools::tags$option(value = y, y))
         )
@@ -121,7 +117,7 @@ reactable(
       filterInput = function(values, name) {
         journals <- sort(unique(values))
         htmltools::tags$select(
-          onchange = sprintf("Reactable.setFilter('%s', this.value)", name),
+          onchange = "Reactable.setFilter('articles-table', 'journal', this.value)",
           htmltools::tags$option(value = "", "All journals"),
           lapply(journals, function(j) htmltools::tags$option(value = j, j))
         )
@@ -147,7 +143,6 @@ reactable(
     )
   )
 )
-
 
 ```
 

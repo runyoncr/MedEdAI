@@ -2,9 +2,10 @@
 title: "Learning More About AI"
 ---
   
-# More Conceptual and Applications
+# More Conceptual
+## Including Applications of AI in Med Ed Assessment
 
-More accessible / useful training
+**UNDER CONSTRUCTION**
 
 # More Technical
 
