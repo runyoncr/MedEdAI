@@ -2,7 +2,7 @@
 title: "Professional Development"
 ---
 
-# IAMSE Winter 2026 Webcast Audio Seminar Series
+# [IAMSE Winter 2026 Webcast Audio Seminar Series](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)
 
 ## From Hype to Reality: AI's Rapid Transformation of Health-Sciences Professions Education
 
@@ -22,4 +22,4 @@ Join us for each one-hour session beginning Thursday, January 8, 2026, at 12 PM 
 
 -   **February 5, 2026, 12:00 PM EST** - Real World AI Use: Guardrails, Responsible Use, and Competencies, presented by Kimberly Lomis, American Medical Association.
 
-More info and registration [here.](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)
+[More info and registration here.](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)
