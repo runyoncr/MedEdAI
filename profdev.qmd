@@ -2,20 +2,21 @@
 title: "Professional Development"
 ---
 
-December 4, 2025:
+December 4, 2025: 
+
 # AAME Medical Educationn Webinars
 
 The AAMC has posted many of their past webinars [online at this website: https://cassyni.com/s/aamc-medical-education/seminars](https://cassyni.com/s/aamc-medical-education/seminars). There are several focused on the use of AI, including:
 
-- Developing AI-Enhanced Curricula
-- Leveraging AI to Enhance Effectiveness in Administration, Analytics, and Leadership
-- Using AI with Data and Scholarship
-- Innovating Med Ed with AI: Insights from the Macy Report
-- AI for Efficiency and Automation
-- Evaluating AI Outputs: Ensuring Accuracy and Relevance
+-   Developing AI-Enhanced Curricula
+-   Leveraging AI to Enhance Effectiveness in Administration, Analytics, and Leadership
+-   Using AI with Data and Scholarship
+-   Innovating Med Ed with AI: Insights from the Macy Report
+-   AI for Efficiency and Automation
+-   Evaluating AI Outputs: Ensuring Accuracy and Relevance
 
+November 30, 2025: 
 
-November 30, 2025:
 # [IAMSE Winter 2026 Webcast Audio Seminar Series](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)
 
 ## From Hype to Reality: AI's Rapid Transformation of Health-Sciences Professions Education
@@ -30,7 +31,7 @@ Join us for each one-hour session beginning Thursday, January 8, 2026, at 12 PM 
 
 -   **January 15, 2026, 12:00 PM EST**- Applied Intelligence: Integrating AI Technologies Into Medical Education, presented by Laurah Turner, University of Cincinnati.
 
--  **January 22, 2026, 12:00 PM EST** - Generative AI in Medical Education: Navigating the Educators' Dilemma, presented by Neil Mehta, Cleveland Clinic Lerner College of Medicine of CWRU SOM.
+-   **January 22, 2026, 12:00 PM EST** - Generative AI in Medical Education: Navigating the Educators' Dilemma, presented by Neil Mehta, Cleveland Clinic Lerner College of Medicine of CWRU SOM.
 
 -   **January 29, 2026, 12:00 PM EST** - Automated Tools to Autonomous Agents: Affordances and Limitations to AI for Learning, presented by Richard Landers, University of Minnesota - Twin Cities.
 
