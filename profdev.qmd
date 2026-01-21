@@ -2,9 +2,13 @@
 title: "Professional Development"
 ---
 
-December 4, 2025: 
+**Posted December 4, 2025**
 
-# AAME Medical Educationn Webinars
+<h1 style="margin-top: 0.2em;">
+
+AAME Medical Education Webinars
+
+</h1>
 
 The AAMC has posted many of their past webinars [online at this website: https://cassyni.com/s/aamc-medical-education/seminars](https://cassyni.com/s/aamc-medical-education/seminars). There are several focused on the use of AI, including:
 
@@ -15,11 +19,23 @@ The AAMC has posted many of their past webinars [online at this website: https:/
 -   AI for Efficiency and Automation
 -   Evaluating AI Outputs: Ensuring Accuracy and Relevance
 
-November 30, 2025: 
+\\
 
-# [IAMSE Winter 2026 Webcast Audio Seminar Series](https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/)
+\\
 
-## From Hype to Reality: AI's Rapid Transformation of Health-Sciences Professions Education
+**Posted November 30, 2025**
+
+<h1 style="margin-top: 0.2em;">
+
+<a href="https://www.iamse.org/registration-is-now-open-for-the-winter-2026-webcast-audio-seminar-series/">IAMSE Winter 2026 Webcast Audio Seminar Series</a>
+
+</h1>
+
+<h2 style="margin-top: 0.2em;">
+
+From Hype to Reality: AI's Rapid Transformation of Health-Sciences Professions Education
+
+</h2>
 
 Join IAMSE for this five-session Winter WAS series that will examine evidence-based applications, assessment of knowledge/skills, human factors in AI adoption, autonomous AI agents for teaching and administration, and policy and competency frameworks for faculty and students.
 
